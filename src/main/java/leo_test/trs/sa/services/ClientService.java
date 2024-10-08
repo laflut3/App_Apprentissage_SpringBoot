@@ -39,4 +39,14 @@ public class ClientService {
         }
         return client1;
     }
+
+    public void modifier(int id, Client client) {
+        Client clientBDD = this.lire(id);
+        if(clientBDD.getId() == client.getId()) {
+            clientBDD.setTelephone(client.getTelephone());
+            clientBDD.setEmail(client.getEmail());
+            this.clientRepository.save(clientBDD);
+        }
+
+    }
 }
