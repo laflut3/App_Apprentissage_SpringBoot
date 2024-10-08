@@ -1,12 +1,13 @@
 package leo_test.trs.sa.controller;
 
+import leo_test.trs.sa.dto.ClientDTO;
 import leo_test.trs.sa.entites.Client;
 import leo_test.trs.sa.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.stream.Stream;
 
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -25,7 +26,7 @@ public class ClientController {
     }
 
     @GetMapping(produces = APPLICATION_JSON_VALUE)
-    public List<Client> getClients() {
+    public Stream<ClientDTO> getClients() {
         return this.clientService.rechercherAll();
     }
 
