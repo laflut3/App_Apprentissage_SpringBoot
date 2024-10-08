@@ -1,5 +1,6 @@
 package leo_test.trs.sa.services;
 
+import jakarta.persistence.EntityNotFoundException;
 import leo_test.trs.sa.entites.Client;
 import leo_test.trs.sa.repository.ClientRepository;
 import lombok.AllArgsConstructor;
@@ -29,7 +30,9 @@ public class ClientService {
 
     public Client lire(int id) {
         Optional<Client> optionalClient = this.clientRepository.findById(id);
-        return optionalClient.orElse(null);
+        return optionalClient.orElseThrow(
+                () -> new EntityNotFoundException("Aucun client n'existe avec cet id")
+        );
     }
 
     public Client lireOuCreer(Client client) {

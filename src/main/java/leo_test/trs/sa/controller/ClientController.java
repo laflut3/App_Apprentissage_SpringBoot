@@ -34,6 +34,26 @@ public class ClientController {
         return this.clientService.lire(id);
     }
 
+    /* Methode 2:
+      //@ResponseStatus(BAD_REQUEST)
+      //@ExceptionHandler({EntityNotFoundException.class})
+      public ErrorEntity handleException(EntityNotFoundException e) {
+         return new ErrorEntity(null, e.getMessage());
+      }
+      */
+
+    /* Methode 1 :
+     * //@GetMapping(path = "{id}", produces = APPLICATION_JSON_VALUE)
+     * public ResponseEntity lire(@PathVariable int id) {
+     *     try {
+     *         Client client = this.clientService.lire(id);
+     *         return ResponseEntity.ok(client);
+     *     }catch (EntityNotFoundException e) {
+     *         return ResponseEntity.status(BAD_REQUEST).body(new ErrorEntity(null, e.getMessage()));
+     *     }
+     * }
+     * */
+
     @ResponseStatus(NO_CONTENT)
     @PutMapping(path = "{id}", consumes = APPLICATION_JSON_VALUE)
     public void update(@PathVariable int id, @RequestBody Client client) {
