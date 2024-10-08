@@ -61,7 +61,7 @@ public class SentimentControllerTest {
         sentiment2.setTexte("Sentiment 2");
         sentiment2.setType(TypeSentiment.NEGATIF);
 
-        when(sentimentService.rechercherAll()).thenReturn(Arrays.asList(sentiment1, sentiment2));
+        when(sentimentService.rechercherAll(null)).thenReturn(Arrays.asList(sentiment1, sentiment2));
 
         mockMvc.perform(get("/sentiment")
                         .accept(MediaType.APPLICATION_JSON))

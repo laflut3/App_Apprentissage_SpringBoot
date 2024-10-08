@@ -68,7 +68,7 @@ public class SentimentServiceTest {
 
         when(sentimentRepository.findAll()).thenReturn(sentiments);
 
-        List<Sentiment> result = sentimentService.rechercherAll();
+        List<Sentiment> result = sentimentService.rechercherAll(null);
 
         assertEquals(2, result.size());
         assertEquals("Sentiment 1", result.get(0).getTexte());
