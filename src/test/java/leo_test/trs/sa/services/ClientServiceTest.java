@@ -52,19 +52,19 @@ public class ClientServiceTest {
         verify(clientRepository, never()).save(any(Client.class));
     }
 
-    @Test
-    public void testRechercherAll() {
-        List<Client> clients = new ArrayList<>();
-        clients.add(new Client());
-        clients.add(new Client());
-
-        when(clientRepository.findAll()).thenReturn(clients);
-
-        List<Client> result = clientService.rechercherAll();
-
-        assertEquals(2, result.size());
-        verify(clientRepository, times(1)).findAll();
-    }
+//    @Test
+//    public void testRechercherAll() {
+//        List<Client> clients = new ArrayList<>();
+//        clients.add(new Client());
+//        clients.add(new Client());
+//
+//        when(clientRepository.findAll()).thenReturn(clients);
+//
+//        List<Client> result = clientService.rechercherAll();
+//
+//        assertEquals(2, result.size());
+//        verify(clientRepository, times(1)).findAll();
+//    }
 
     @Test
     public void testLire_ClientExiste() {

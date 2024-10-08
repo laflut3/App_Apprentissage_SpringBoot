@@ -12,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -56,8 +57,6 @@ public class ClientControllerTest {
         Client client2 = new Client();
         client2.setId(2);
         client2.setEmail("client2@example.com");
-
-        when(clientService.rechercherAll()).thenReturn(Arrays.asList(client1, client2));
 
         mockMvc.perform(get("/client")
                         .accept(MediaType.APPLICATION_JSON))
